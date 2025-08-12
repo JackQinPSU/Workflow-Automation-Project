@@ -25,7 +25,13 @@ const authenticateUser = async({ username, password }) => {
 
 //generate token method
 const generateToken = async(user) => {
-        return jwt.sign({id: user.id, username: user.username }, process.env.JWT_SECRET, {expiresIn: '1h'});
+        return jwt.sign({
+                            id: user.id, 
+                            username: user.username 
+                        }, 
+                        process.env.JWT_SECRET, 
+                        {expiresIn: '1h'}
+                    );
 }
 
 export { createUser, authenticateUser, generateToken };
