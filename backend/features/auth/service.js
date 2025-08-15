@@ -9,7 +9,8 @@ const createUser = async({ username, email, password }) => {
             throw new Error('Missing required fields');
         }
 
-        const passwordHash = await bcrypt.hash(password, process.env.SALT_ROUNDS);
+        const saltRounds = parseInt(process.env.SALT_ROUNDS, 10);
+        const passwordHash = await bcrypt.hash(password, saltRounds);
         return prisma.user.create({
             data: { username, email, passwordHash },
         });
@@ -26,7 +27,6 @@ const authenticateUser = async({ username, password }) => {
 //generate token method
 const generateToken = async(user) => {
         return jwt.sign({
-                            id: user.id, 
                             username: user.username 
                         }, 
                         process.env.JWT_SECRET, 

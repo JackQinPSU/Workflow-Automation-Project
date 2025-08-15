@@ -16,7 +16,7 @@ const register = async (req, res) => {
             return res.status(409).json({ error: 'Username or email already exists '});
         }
         console.error('Register error:', error);
-        return res.status(500).json({ error: 'Server error' });
+        return res.status(500).json({ error: 'Registration Failed!' });
     }
 };
 
@@ -32,7 +32,7 @@ const login = async(req, res) => {
             return res.status(401).json({ error: 'Invalid Credentials' });
         }
 
-        const token = generateToken(user);
+        const token = await generateToken(user);
         return res.status(200).json({ message: 'Login successful', token });
     } catch (error) {
         res.status(500).json({ error: 'Server error' });
