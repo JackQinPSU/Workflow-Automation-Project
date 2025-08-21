@@ -10,13 +10,14 @@ const Login = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
+    // Handle form submission
     const handleSubmit = async (e) => {
         e.preventDefault();
         try{
-            await login(formData);
-            onLogin(); // inform parent that user is logged in
+            const data = await login(formData);
+            localStorage.setItem('token', data.token); // Store token in localStorage
         } catch (err) {
-            setError(err.response?.data?.message || 'Login failed');
+            setError(err.response?.data?.errer || 'Login failed');
     }
 };
 
@@ -32,7 +33,7 @@ return (
                 value={formData.username} 
                 onChange={handleChange} 
                 required 
-                disabled={isLoading}
+
             />
             <input 
                 type="password" 
@@ -41,10 +42,10 @@ return (
                 value={formData.password} 
                 onChange={handleChange} 
                 required 
-                disabled={isLoading}
+
             />
-            <button type="submit" disabled={isLoading}>
-                {isLoading ? 'Logging in...' : 'Login'}
+            <button type="submit">
+                Login
             </button>
         </form>
     </div>
