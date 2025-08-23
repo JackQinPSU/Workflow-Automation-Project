@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const APP_AUTH_URL = process.env.APP_AUTH_URL;
+const APP_AUTH_URL = process.env.VITE_API_URL;
 
 
 //Register user
