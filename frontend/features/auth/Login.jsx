@@ -47,6 +47,9 @@ return (
             <button type="submit">
                 Login
             </button>
+            <button type="button" onClick={() => window.location.href = '/register'}>
+                Register
+            </button>
         </form>
     </div>
 );
