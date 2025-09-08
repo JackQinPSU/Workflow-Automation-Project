@@ -17,7 +17,7 @@ const Login = () => {
             const data = await login(formData);
             localStorage.setItem('token', data.token); // Store token in localStorage
         } catch (err) {
-            setError(err.response?.data?.errer || 'Login failed');
+            setError(err.response?.data?.error || 'Login failed');
     }
 };
 

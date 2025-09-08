@@ -50,6 +50,10 @@ return (
                 required 
             />
             <button type="submit">Register</button>
+
+            <button type="button" onClick={() => window.location.href = '/login'}>
+                Have an account? Login!
+            </button>
         </form>
     </div>
 );

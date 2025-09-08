@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const APP_AUTH_URL = import.meta.env.VITE_APP_AUTH_URL;
+const APP_AUTH_URL = import.meta.env.VITE_API_URL;
 
 
 //Register user
