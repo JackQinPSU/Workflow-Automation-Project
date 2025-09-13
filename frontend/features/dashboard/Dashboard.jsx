@@ -4,11 +4,19 @@ import React from "react";
 const Dashboard = () => {
     return (
         <div>
-            <h1>Welcome to the Dashboard</h1>
+            <div className="navbar">
+                <div className="logo">BookMatch</div>
+                <div className="menu">
+                    <a href="">Home</a>
+                    <a href="">Library</a>
+                    <a href="">Profile</a>
+                </div>
+            </div>
 
-            <p className="upload Picture ">Upload Documents</p>
-            <button className="upload button">Upload</button>
-            <textarea></textarea>
+            <div className="upload-section">
+                <p className="upload Picture ">Upload a picture!</p>
+                <button className="upload button">Upload</button>
+            </div>
         </div>
     );
 }

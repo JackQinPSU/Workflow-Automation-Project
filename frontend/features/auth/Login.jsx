@@ -16,6 +16,7 @@ const Login = () => {
         try{
             const data = await login(formData);
             localStorage.setItem('token', data.token); // Store token in localStorage
+            window.location.href = '/dashboard';
         } catch (err) {
             setError(err.response?.data?.error || 'Login failed');
     }
@@ -23,34 +24,38 @@ const Login = () => {
 
 return (
     <div className="login-container">
-        <h2>Login</h2>
-        {error && <p className="error">{error}</p>}
-        <form onSubmit={handleSubmit}>
-            <input 
-                type="text" 
-                name="username" 
-                placeholder="Username" 
-                value={formData.username} 
-                onChange={handleChange} 
-                required 
+        <div className="login-card">
+            <h2 className="login-title">Login</h2>
+            {error && <p className="error-message">{error}</p>}
+            <form className="login-form"onSubmit={handleSubmit}>
+                <input 
+                    className="login-input"
+                    type="text" 
+                    name="username" 
+                    placeholder="Username" 
+                    value={formData.username} 
+                    onChange={handleChange} 
+                    required 
 
-            />
-            <input 
-                type="password" 
-                name="password" 
-                placeholder="Password" 
-                value={formData.password} 
-                onChange={handleChange} 
-                required 
+                />
+                <input 
+                    className="login-input"
+                    type="password" 
+                    name="password" 
+                    placeholder="Password" 
+                    value={formData.password} 
+                    onChange={handleChange} 
+                    required 
 
-            />
-            <button type="submit">
-                Login
-            </button>
-            <button type="button" onClick={() => window.location.href = '/register'}>
-                Register
-            </button>
-        </form>
+                />
+                <button className="login-button" type="submit">
+                    Login
+                </button>
+                <button className="secondary-button" type="button" onClick={() => window.location.href = '/register'}>
+                    Register
+                </button>
+            </form>
+        </div>
     </div>
 );
 }

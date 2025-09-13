@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { register } from './authService';
+import './Register.css';
 
 const Register = () => {
     const [formData, setFormData] = useState({ username: "", email: "", password: ""});
@@ -22,39 +23,44 @@ const handleSubmit = async (e) => {
 
 return (
     <div className="register-container">
-        <h2 className="register-title">Register</h2>
-        {error && <p className="error">{error}</p>}
-        <form onSubmit={handleSubmit} className='register-form'>
-            <input 
-                type="text" 
-                name="username" 
-                placeholder="Username" 
-                value={formData.username} 
-                onChange={handleChange} 
-                required 
-            />
-            <input 
-                type="email" 
-                name="email" 
-                placeholder="Email" 
-                value={formData.email} 
-                onChange={handleChange} 
-                required 
-            />
-            <input 
-                type="password" 
-                name="password" 
-                placeholder="Password" 
-                value={formData.password} 
-                onChange={handleChange} 
-                required 
-            />
-            <button type="submit">Register</button>
+        <div className="register-card">
+            <h2 className="register-title">Register</h2>
+            {error && <p className="error">{error}</p>}
+            <form onSubmit={handleSubmit} className='register-form'>
+                <input 
+                    className="register-input"
+                    type="text" 
+                    name="username" 
+                    placeholder="Username" 
+                    value={formData.username} 
+                    onChange={handleChange} 
+                    required 
+                />
+                <input 
+                    className="register-input"
+                    type="email" 
+                    name="email" 
+                    placeholder="Email" 
+                    value={formData.email} 
+                    onChange={handleChange} 
+                    required 
+                />
+                <input 
+                    className="register-input"
+                    type="password" 
+                    name="password" 
+                    placeholder="Password" 
+                    value={formData.password} 
+                    onChange={handleChange} 
+                    required 
+                />
+                <button className="register-button"type="submit">Register</button>
 
-            <button type="button" onClick={() => window.location.href = '/login'}>
-                Have an account? Login!
-            </button>
-        </form>
+                <button className="secondary-button"type="button" onClick={() => window.location.href = '/login'}>
+                    Have an account? Login!
+                </button>
+            </form>
+        </div>
     </div>
 );
 }
